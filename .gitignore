@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 *.DS_Store
 .env
+/node_modules
+/coverage
+/.next/
+/build
