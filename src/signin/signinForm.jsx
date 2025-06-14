@@ -31,6 +31,7 @@ function SigninForm() {
       if (response.success) {
         console.log("프로미스 객체 반환하는 코드 뒤에 작성한 코드");
         console.log(response);
+        localStorage.setItem("login", true);
         location.href = "/";
       } else {
         //response가 false일 경우 //400, 500

@@ -1,8 +1,16 @@
 // import "../tailwind.css";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function HeaderComponent() {
   const [isSignin, setIsSignin] = useState(false);
+
+  useEffect(() => {
+    const state = localStorage.getItem("login");
+    if (state) {
+      setIsSignin(true);
+    }
+  }, []); //화면 렌더링 후 비동기적으로 실행
 
   return (
     <header className="bg-white border-b border-gray-200 py-4 px-4">
