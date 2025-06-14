@@ -13,6 +13,10 @@ function SignupForm() {
     email: "",
     password: "",
   });
+  let response = {
+    success: false,
+    data: "", //promise
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -21,14 +25,21 @@ function SignupForm() {
     const username = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const data = await signupAPI(email, username, password);
 
-    if (data.success) {
-      console.log("Signup successful, Send code to your email");
-      location.href = "/signin";
-      //회원가입 다음 단계 페이지 띄어주기
-      //사용자에게 이메일 링크가면 그 링크를 클릭할 것임.
-    } else {
+    try {
+      response = await signupAPI(email, username, password);
+      if (response.success) {
+        console.log(
+          "Sigconst data = await signupAPI(email, username, password);nup successful, Send code to your email"
+        );
+        location.href = "/signin";
+        //회원가입 다음 단계 페이지 띄어주기
+        //사용자에게 이메일 링크가면 그 링크를 클릭할 것임.
+      } else {
+        console.log("Signup failed", response);
+        alert(response.data);
+      }
+    } catch {
       console.log("Signup failed");
     }
   };

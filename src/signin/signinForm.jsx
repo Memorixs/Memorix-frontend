@@ -25,13 +25,19 @@ function SigninForm() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    response = await signinAPI(email, password); //성공아니면 프로미스 반환(성공이 400도 성공으로 반환함)
-    //프로미스를 반환하므로 if로 조건처리하지 말고 try catch를 사용할 수 있다. await대신 .then() 을 사용해서 성공처리를 할 수 있지만 프로미스 헬 발생가능
-    console.log("프로미스 객체 반환하는 코드 뒤에 작성한 코드");
-    if (response.success) {
-      console.log(response);
-      location.href = "/";
-    } else {
+    try {
+      response = await signinAPI(email, password); //성공아니면 프로미스 반환(성공이 400도 성공으로 반환함)
+      //프로미스를 반환하므로 if로 조건처리하지 말고 try catch를 사용할 수 있다. await대신 .then() 을 사용해서 성공처리를 할 수 있지만 프로미스 헬 발생가능
+      if (response.success) {
+        console.log("프로미스 객체 반환하는 코드 뒤에 작성한 코드");
+        console.log(response);
+        location.href = "/";
+      } else {
+        //response가 false일 경우 //400, 500
+        console.log("response", response);
+        alert(response.data);
+      }
+    } catch {
       console.log("response", response);
     }
   };

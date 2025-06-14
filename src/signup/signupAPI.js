@@ -13,28 +13,26 @@ async function signupAPI(email, username, password) {
       }),
     });
 
+    let data;
     if (response.ok) {
-      const data = await response.json();
+      data = await response.json();
       console.log("Signup successful");
-      return { success: true, data };
+      return { success: true, data: data };
     } else if (response.status === 400) {
-      const errorData = await response.json();
-      console.log("Signup failed:", errorData);
+      data = await response.text();
+      console.log("Signup failed:", data);
       return {
         success: false,
-        error: "Invalid input data",
-        details: errorData,
+        data: data,
       };
     } else if (response.status === 500) {
+      data = await response.text();
       console.log("Internal server error");
-      return { success: false, error: "Server error occurred" };
-    } else {
-      console.log("Unexpected error:", response.status);
-      return { success: false, error: "Unexpected error occurred" };
+      return { success: false, data: data };
     }
   } catch (error) {
     console.error("Network error:", error);
-    return { success: false, error: "Network error occurred" };
+    return { success: false, error: "Unexpected error occurred" };
   }
 }
 

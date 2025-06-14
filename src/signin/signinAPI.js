@@ -16,23 +16,23 @@ async function signinAPI(email, password) {
   if (response.ok) {
     return {
       success: true,
-      response: data,
+      data: data,
     };
   } else if (response.status == 400) {
     console.log("data:", data);
     return {
       success: false,
-      response: data,
+      data: data,
     };
   } else if (response.status == 500) {
     return {
       success: false,
-      response: data,
+      data: data,
     };
   } else {
     return {
       success: false,
-      response: "Unexpacted Error",
+      data: "Unexpacted Error",
     };
   }
 }
