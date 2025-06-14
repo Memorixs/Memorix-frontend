@@ -1,5 +1,5 @@
 import { useState } from "react";
-import signupAPI from "./signupAPI";
+import signupAPI from "./signupAPI.js";
 import verifyEmailAPI from "./verifyEmailAPI";
 import HeaderComponent from "../layout/headerComponent";
 import FooterCompoenet from "../layout/footerComponent";
@@ -29,6 +29,10 @@ function SignupButton() {
     } else {
       console.log("Signup failed");
     }
+  };
+
+  const signinHandler = () => {
+    location.href = "/signin";
   };
 
   //   const handleVerifyEmail = (e) => {
@@ -66,6 +70,9 @@ function SignupButton() {
           placeholder="password"
         />
         <button type="submit">Signup</button>
+        <button type="button" onClick={signinHandler}>
+          로그인
+        </button>
       </form>
       <FooterCompoenet />
     </>
