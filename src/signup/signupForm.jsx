@@ -3,6 +3,7 @@ import signupAPI from "./signupAPI.js";
 import verifyEmailAPI from "./verifyEmailAPI";
 import HeaderComponent from "../layout/headerComponent";
 import FooterComponent from "../layout/footerComponent";
+import KakaoLoginButton from "../kakao/kakaoLoginButton.jsx";
 // import "tailwindcss";
 
 function SignupForm() {
@@ -76,6 +77,7 @@ function SignupForm() {
             </h2>
             <p className="text-gray-500 text-sm">새로운 계정을 만드세요</p>
           </div>
+          <KakaoLoginButton text="카카오톡으로 로그인" />
 
           <form onSubmit={handleSignup}>
             <div className="space-y-5">

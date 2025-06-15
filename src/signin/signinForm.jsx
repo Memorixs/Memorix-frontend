@@ -2,6 +2,7 @@ import signinAPI from "./signinAPI.js";
 import React, { useState } from "react";
 import HeaderComponent from "../layout/headerComponent.jsx";
 import FooterComponent from "../layout/footerComponent.jsx";
+import KakaoLoginButton from "../kakao/kakaoLoginButton.jsx";
 
 function SigninForm() {
   const [formData, setFormData] = useState({
@@ -46,7 +47,6 @@ function SigninForm() {
   return (
     <div className="w-xl min-h-screen bg-gray-50 flex flex-col">
       <HeaderComponent />
-
       <main className="flex-grow flex py-16 px-4">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-10 w-full max-w-lg">
           <div className="text-center mb-10">
@@ -54,7 +54,7 @@ function SigninForm() {
               로그인
             </h2>
           </div>
-
+          <KakaoLoginButton text="카카오톡으로 로그인" />
           <div className="space-y-5">
             <form onSubmit={signinHandler}>
               <div>
